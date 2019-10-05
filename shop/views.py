@@ -8,8 +8,10 @@ from accounts.models import *
 
 
 def home(request):
+    companies = Company.objects.all()
     products = Product.objects.all().order_by('-id')
     context = {
+        'companies': companies,
         'products': products,
     }
     return render(request, "dashboard.html", context)
@@ -75,3 +77,18 @@ def viewProduct(request, product_slug):
         'product': product,
     }
     return render(request, "viewProduct.html", context)
+
+
+def Profile(request, user_id):
+    user = User.objects.filter(id=user_id)[0]
+    if user.is_company:
+        context = {
+            'company': Company.objects.filter(user=user).first(),
+        }
+        return render(request, "companyProfile.html", context)
+    elif user.is_customer:
+        context = {
+
+        }
+        return render(request, "customerProfile.html", context)
+    return render(request, "404.html")

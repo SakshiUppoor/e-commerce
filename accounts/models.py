@@ -8,7 +8,7 @@ class User(AbstractUser):
     is_company = models.BooleanField(default=False)
     is_customer = models.BooleanField(default=False)
     profile_images = models.ImageField(
-        default="default.jpg", upload_to='profile_images', blank=True, null=True)
+        default="profile_images/default.jpg", upload_to='profile_images', blank=True, null=True)
 
     def __str__(self):
         if self.is_company:
@@ -21,10 +21,10 @@ class User(AbstractUser):
 
 class Company(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
+        User, on_delete=models.CASCADE, primary_key=True, related_name="company")
     description = models.CharField(max_length=255, blank=True, null=True)
     header = models.ImageField(
-        default="default.jpg", upload_to='headers', blank=True, null=True)
+        default="headers/default.jpg", upload_to='headers', blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name

@@ -51,7 +51,7 @@ def register(request):
                     user = User.objects.create_user(
                         username=email, email=email, password=password1, first_name=first_name, is_company=True)
                     user.save()
-                    return HttpResponseRedirect(reverse('accounts:login'))
+                    return HttpResponseRedirect(reverse('accounts:user_login'))
             else:
                 messages.info(request, 'Password not matching')
                 return HttpResponseRedirect(reverse('accounts:signup'))

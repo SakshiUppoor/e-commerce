@@ -5,6 +5,27 @@ from django.utils.text import slugify
 # Create your models here.
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+
+class Subcategory(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "subcategories"
+
+
 class Product(models.Model):
     name = models.CharField(max_length=50, blank=False)
     slug = models.SlugField(max_length=250, null=True, blank=True)
@@ -14,7 +35,9 @@ class Product(models.Model):
     company = models.ForeignKey(
         Company, on_delete=models.CASCADE, null=True)
     product_image = models.ImageField(
-        default="default.jpg", upload_to='product_images', blank=True, null=True)
+        default="product_images/default.jpg", upload_to='product_images', blank=True, null=True)
+    subcategory = models.ForeignKey(
+        Subcategory, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
