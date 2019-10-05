@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Company Dashboard</title>
+</head>
+
+<body>
+  <h1>Products by {{products.first.company}}</h1>
+  Logged in as: {{request.user}}
+  {% if request.user.is_company %}
+    <form action="{% url 'shop:add' %}">{% csrf_token %}
+        <input type="submit" value="Add Product">
+  {% for product in products %}
+  <br>
+  <br>
+  {{ product.name }}-{{ product.description }}-{{ product.rate }}-{{ product.in_stock }}
+  </form>
+  <form action="{% url 'shop:view' product_slug=product.slug %}">{% csrf_token %}
+    <input type="submit" value="View">
+  </form>
+  <form action="{% url 'shop:edit' product_slug=product.slug %}">{% csrf_token %}
+    <input type="submit" value="Edit">
+  </form>
+  <form action="{% url 'shop:delete' product_slug=product.slug %}">{% csrf_token %}
+    <input type="submit" value="Delete">
+  </form>
+  {% endfor %}
+  {% else %}
+  {% for product in products %}
+  <br>
+  <br>
+  {{ product.name }}-{{ product.description }}-{{ product.rate }}-{{ product.in_stock }}
+  </form>
+  <form action="{% url 'shop:view' product_slug=product.slug %}">{% csrf_token %}
+    <input type="submit" value="View">
+  </form>
+  <form action="#">{% csrf_token %}
+    <input type="submit" value="Add To Cart">
+  </form>
+  {% endfor %}
+  {% endif %}
+</body>
+
+</html>
