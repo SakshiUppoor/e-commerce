@@ -3,6 +3,7 @@ from django.contrib.auth.models import auth
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from shop.models import *
 User = get_user_model()
 
 # Create your views here.
@@ -81,3 +82,22 @@ def user_login(request):
 def user_logout(request):
     auth.logout(request)
     return redirect(reverse('accounts:user_login'))
+
+
+''' under-construction
+def Profile(request, user_id):
+    this_user = User.objects.get(id=user_id)
+    if this_user.is_company:
+        items = Product.objects.filter(company=this_user.company)
+        context = {
+            'items': items,
+            'company': Company.objects.filter(user=this_user).first(),
+        }
+        return render(request, "companypage.html", context)
+    elif this_user.is_customer:
+        context = {
+
+        }
+        return render(request, "customerProfile.html", context)
+    return render(request, "404.html")
+'''

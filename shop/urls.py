@@ -8,5 +8,4 @@ urlpatterns = [
     path('view/<slug:product_slug>', views.viewProduct, name="view"),
     path('edit/<slug:product_slug>', views.editProduct, name="edit"),
     path('delete/<slug:product_slug>', views.deleteProduct, name="delete"),
-    path('profile/<int:user_id>', views.Profile, name="profile"),
 ]

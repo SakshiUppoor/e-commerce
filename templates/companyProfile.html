@@ -1,24 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/companyProfile.css' %}">
-    <style>
-        .header {
-            background: url({{ company.header.url }})
-        }
-    </style>
-    <title>Document</title>
-</head>
-
-<body>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/companyProfile.css' %}">
+<style>
+    .header {
+        background: url({{ company.header.url }})
+    }
+</style>
+{% endblock css %}
+{% block content %}
     <div class="header">
-        hi
+        <h1>{{ company }}</h1>
     </div>
-</body>
-
-</html>
+{% endblock content %}
