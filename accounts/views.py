@@ -84,7 +84,9 @@ def user_logout(request):
     return redirect(reverse('accounts:user_login'))
 
 
-''' under-construction
+''' under-construction'''
+
+
 def Profile(request, user_id):
     this_user = User.objects.get(id=user_id)
     if this_user.is_company:
@@ -100,4 +102,3 @@ def Profile(request, user_id):
         }
         return render(request, "customerProfile.html", context)
     return render(request, "404.html")
-'''

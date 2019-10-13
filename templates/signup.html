@@ -40,7 +40,7 @@
     <div id="Buy" style="display:block" class="tabcontent">
         <h3>Buy</h3>
         <p>
-            <form action="{% url 'accounts:signup' %}" method="post">
+            <form action="{% url 'signup' %}" method="post">
                 {% csrf_token %}            
                 <div class="form-group">
                     <label class="sr-only" for="inlineFormInput">First Name</label>
@@ -73,7 +73,7 @@
     <div id="Sell" class="tabcontent">
         <h3>Sell</h3>
         <p>
-            <form action="{% url 'accounts:signup' %}" method="post">
+            <form action="{% url 'signup' %}" method="post">
                 {% csrf_token %}            
                 <div class="form-group">
                     <label class="sr-only" for="inlineFormInput">Company Name</label>

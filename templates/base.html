@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {% block home %}{% endblock home %}">
-                    <a class="nav-link" href="{% url 'shop:home' %}">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item {% block companies %}{% endblock companies %}">
                     <a class="nav-link" href="#">Companies</a>
@@ -49,7 +49,7 @@
                             <a class="dropdown-item" href="#">Cart</a>
                             <a class="dropdown-item" href="#">Wishlist</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'accounts:user_logout' %}">Logout</a>
+                            <a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a>
                         </div>
                     </li>
                 </ul>

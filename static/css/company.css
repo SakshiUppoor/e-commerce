@@ -22,6 +22,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 5;
+    transition: all 0.1s ease-in-out;
 }
 
 nav>div:not(:first-child) {
@@ -46,10 +47,6 @@ nav> div {
 }
 
 .header-wrapper {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    left: 0;
     background: black;
 }
 
@@ -57,6 +54,7 @@ nav> div {
     z-index: 2;
     position: absolute;
     padding: 6em 5em;
+    width: 100%;
 }
 
 .name {
@@ -159,10 +157,11 @@ nav> div {
 .buttons {
     justify-content: space-around;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 1em;
 }
 
-button {
+.btn {
     background: #3853d8;
     border: none;
     color: rgba(255, 255, 255, 0.89);
@@ -175,7 +174,7 @@ button {
     font-weight: 500;
 }
 
-button:hover {
+.btn:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
 }
@@ -185,3 +184,22 @@ button:hover {
         grid-template-columns: 1fr 1fr;
     }
   }
+
+.edit-btn {
+    color: #fff;
+    position: absolute;
+    top: 4em;
+    right: 10em;
+    font-size: 1.5em;
+    background: rgba(255, 255, 255, 0.322);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 0.3em;
+    transition: all 0.1s ease-in-out;
+}
+
+.edit-btn:hover {
+    background: rgba(255, 255, 255, 0.658);
+    cursor: pointer;
+}

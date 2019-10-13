@@ -31,7 +31,7 @@
 
 <body>
     <h1>Login up</h1>
-            <form method="post" action="{% url 'accounts:user_login' %}">
+            <form method="post" action="{% url 'user_login' %}">
             {% csrf_token %}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>

@@ -1,8 +1,44 @@
 from django.db import models
-from accounts.models import Company
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 from django.utils.text import slugify
-# Create your models here.
+from django.dispatch import receiver
+from django.contrib.auth.models import AbstractUser
+from django.dispatch import receiver
+
+
+class User(AbstractUser):
+    is_company = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
+    profile_images = models.ImageField(
+        default="profile_images/default.jpg", upload_to='profile_images', blank=True, null=True)
+
+    def __str__(self):
+        if self.is_company:
+            return self.first_name
+        elif self.is_customer:
+            return self.first_name+" "+self.last_name
+        else:
+            return self.username
+
+
+class Company(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True, related_name="company")
+    description = models.CharField(max_length=255, blank=True, null=True)
+    header = models.ImageField(
+        default="headers/default.jpg", upload_to='headers', blank=True, null=True)
+
+    def __str__(self):
+        return self.user.first_name
+
+    class Meta:
+        verbose_name_plural = "companies"
+
+
+@receiver(post_save, sender=User)
+def create_lectures(sender, **kwargs):
+    if kwargs['created'] and kwargs.get('instance').is_company == True:
+        company = Company.objects.create(user=kwargs.get('instance'))
 
 
 class Category(models.Model):
@@ -55,9 +91,26 @@ def create_slug(instance, new_slug=None):
     return slug
 
 
+@receiver(pre_save, sender=Product)
 def pre_save_product_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = create_slug(instance)
 
 
-pre_save.connect(pre_save_product_receiver, sender=Product)
+class OrderItem(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=0)
+    order_item_cost = models.PositiveIntegerField(default=0)
+
+
+@receiver(post_save, sender=OrderItem)
+def update_order_item_cost(sender, **kwargs):
+    instance.quantity = instance.product.rate * instance.quantity
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True)
+    product = models.ManyToManyField(Product)

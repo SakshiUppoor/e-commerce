@@ -10,7 +10,7 @@
 
 <body>
 hi
-    <form method="post" action="{% url 'shop:add' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'add' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <!--<input type="text" placeholder="Name of product" name="product_name" />
         <input type="text" placeholder="Description of product" name="description" />
