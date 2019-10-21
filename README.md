@@ -1,6 +1,8 @@
 # e-commerce
 
 ## TO DO
-* [ ] Create profile page for company & customer with edit options
-* [ ] Add to cart
+* [x] Create profile page for company with edit options
+* [x] Add to cart
 * [ ] Product Reviews Section
+* [ ] Customer Profile
+* [ ] Manage Inventory
