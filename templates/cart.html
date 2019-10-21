@@ -1,0 +1,179 @@
+{% extends 'home2.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock css %}
+
+
+{% block style %}
+.product-image {
+background: url("{{ product.product_image.url }}");
+background-repeat: no-repeat;
+height: 50vh;
+opacity: 0.8;
+background-size: contain !important;
+content: ' ';
+background-position: center center;
+}
+{% endblock style %}
+
+{% block heading %}
+Your Cart
+{% endblock heading %}
+
+
+{% block info %}
+{% if cartItems.count == 0 %}
+<div class="none">No items in cart.</div>
+{% else %}
+{% for item in cartItems %}
+<div class="cart-columns">
+    <div class="product-image">
+        <img src="{{item.product.product_image.url}}" height="100px">
+    </div>
+    <div class="product-name">{{item.product.name}}</div>
+    <div class="product-rate">₹ {{item.product.rate}}</div>
+    <div>
+        <form method="post" action="{% url 'cart' %}">
+            {% csrf_token %}
+            <div class="quantity-counter">
+                <input type="hidden" name="itemId" value="{{item.id}}">
+                <input type="submit" name="subtract" class="minus" value="-"></input>
+                <input type=" number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
+                <input type="submit" name="add" class="plus" value="+"></input>
+            </div>
+
+        </form>
+    </div>
+    <div class="product-cost">₹ {{item.cost}}</div>
+    <form method="post" action="{% url 'cart' %}">
+        {% csrf_token %}
+        <input type="hidden" name="itemId" value="{{item.id}}">
+        <div class="save"><button type="submit" name="save">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </button></div>
+    </form>
+</div>
+
+{% endfor %}
+<div class="total-row">
+    <div class="total">Total: </div>
+    <div class="total-cost">₹ {{total_cost}}</div>
+    <button class="checkout">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Checkout
+    </button>
+</div>
+
+{% endif %}
+</div>
+
+<div class="info">
+    <div class="heading">Saved for later</div>
+    {% if savedItems.count == 0 %}
+    <div class="none">No items in cart.</div>
+    {% endif %}
+    {% for item in savedItems %}
+    <div class="cart-columns">
+        <div class="product-image">
+            <img src="{{item.product.product_image.url}}" height="100px">
+        </div>
+        <div class="product-name">{{item.product.name}}</div>
+        <div class="product-rate">₹ {{item.product.rate}}</div>
+        <div>
+            <form method="post" action="{% url 'cart' %}">
+                {% csrf_token %}
+                <div class="quantity-counter">
+                    <input type="hidden" name="itemId" value="{{item.id}}">
+                    <input type="submit" name="subtract" class="minus" value="-"></input>
+                    <input type=" number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
+                    <input type="submit" name="add" class="plus" value="+"></input>
+                </div>
+
+            </form>
+        </div>
+        <div class="product-cost">₹ {{item.cost}}</div>
+        <form method="post" action="{% url 'cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="itemId" value="{{item.id}}">
+            <div class="save"><button type="submit" name="cart">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </button></div>
+        </form>
+    </div>
+    {% endfor %}
+
+
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form method="POST" action="{% url 'cart' %}">
+                {% csrf_token %}
+                <div class="edit-form">
+                    <div class="form-group">
+                        <div class="form-label">
+                            Billing address
+                        </div>
+                        <input type="text" class="myfieldclass" name="address">
+                    </div>
+                    <center><input type="submit" class="submit" value="Submit" name="submit" /></center>
+            </form>
+        </div>
+        <div class="close">
+            <ion-icon name="close"></ion-icon>
+        </div>
+    </div>
+
+</div>
+
+{% endblock info %}
+
+{% block script %}
+<script>
+    function subtract() {
+        label = document.getElementById(" quantity"); q = Number(label.value); if (q > 1) {
+            q = q - 1;
+            label.value = q;
+        }
+    }
+
+    function add() {
+        label = document.getElementById("quantity");
+        q = Number(label.value);
+        q = q + 1;
+        label.value = q;
+    }
+
+</script>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementsByClassName("checkout")[0];
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endblock script %}

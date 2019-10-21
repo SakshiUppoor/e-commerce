@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 20fr 1fr 1fr 1fr;
+    background: #3853d8;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    transition: all 0.1s ease-in-out;
+}
+
+nav>div:not(:first-child) {
+    border-left: 2px solid #ffffff56;
+}
+
+nav> div {
+    padding: 1em;
+}
+.active {
+    background: #3853d8;
+    color: #fff;
+}
+
+
+.title {
+    font-family: 'Pacifico', cursive;
+    padding: 0.2em;
+    font-size: 1.4em;
+    vertical-align: middle;
+}
+
+.header-wrapper {
+    background: #3853d8;
+    height: 40vh;
+}
+
+.header-info {
+    z-index: 2;
+    position: absolute;
+    padding: 7em 0;
+    width: 100%;
+}
+
+.name {
+    font-size: 1.5em;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.desc {
+    font-size: 2vw;
+    color: #fff;
+}
+
+.info {
+    position: relative;
+    bottom: 7em;
+    margin: 0 5em;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    background: #fff;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    border: 0;
+    text-align: center;
+    width: 3em;;
+}
+
+.plus, .minus, .quantity {
+    display: inline-block;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.plus:focus, .minus:focus, .quantity:focus {
+    outline: none;
+}
+
+.quantity-counter {
+    display: inline-block;
+    border: #acacac6c solid 1.5px;
+    border-radius: 2em;
+    padding: 1em 0.8em;
+}
+
+.plus, .minus {
+    border: none;
+    background: none;
+    color: #acacac;
+    cursor: pointer;
+}

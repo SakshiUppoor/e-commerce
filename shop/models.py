@@ -36,9 +36,11 @@ class Company(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_lectures(sender, **kwargs):
+def create_components(sender, **kwargs):
     if kwargs['created'] and kwargs.get('instance').is_company == True:
         company = Company.objects.create(user=kwargs.get('instance'))
+    elif kwargs['created'] and kwargs.get('instance').is_customer == True:
+        cart = Cart.objects.create(user=kwargs.get('instance'))
 
 
 class Category(models.Model):
@@ -97,20 +99,48 @@ def pre_save_product_receiver(sender, instance, *args, **kwargs):
         instance.slug = create_slug(instance)
 
 
-class OrderItem(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=0)
-    order_item_cost = models.PositiveIntegerField(default=0)
-
-
-@receiver(post_save, sender=OrderItem)
-def update_order_item_cost(sender, **kwargs):
-    instance.quantity = instance.product.rate * instance.quantity
-
-
 class Cart(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True, related_name="cart")
+
+    def __str__(self):
+        return self.user.first_name + "'s Cart"
+
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    cost = models.FloatField(default=0)
+    is_saved_for_later = models.BooleanField(default=False)
+    cart = models.ForeignKey(
+        Cart, on_delete=models.CASCADE, null=True)
+
+
+class WishlistItem(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True)
-    product = models.ManyToManyField(Product)
+        User, on_delete=models.CASCADE, related_name="wishlistitem")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.first_name + self.product.name
+
+
+'''
+@receiver(post_save, sender=OrderItem)
+def update_order_item_cost(sender, instance, **kwargs):
+    instance.order_item_cost = instance.product.rate * instance.quantity
+
+'''
+
+
+class Order(models.Model):
+    total = models.FloatField(default=0)
+    address = models.CharField(max_length=1000, blank=True)
+
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    order_item_cost = models.FloatField(default=0)
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, null=True)

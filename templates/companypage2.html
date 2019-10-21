@@ -1,0 +1,121 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/company.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base2.css' %}">
+        
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% endblock css %}
+    {% block style %}
+        .product-image {}
+
+        .header {
+            background: url("{{ company.header.url }}");
+            background-repeat: no-repeat;
+            height: 50vh;
+            opacity: 0.8;
+            background-size: cover !important;
+        }
+    {% endblock style %}
+
+    {% block content %}
+
+    <div class="header-info">
+        {% if company.user == request.user %}
+        <button class="edit-btn" data-toggle="modal" data-target="#myModal">
+            <ion-icon name="create"></ion-icon>
+        </button>
+        {% endif %}
+        <div class="name">{{ company }}</div>
+        <div class="desc">{{ company.description }}</div>
+    </div>
+    <main>
+        <div class="header-wrapper">
+            <div class="header">
+
+            </div>
+        </div>
+        <div class="info">
+            <div class="main-content">
+                <div class="sidenav">
+                    <div class="categories">
+                        <div class="popular-products active">Popular Products</div>
+                        <div class="latest-products">Latest Products</div>
+                    </div>
+                </div>
+                <div class="main-col">
+                    {% for item in items %}
+                    <div class="item">
+                        <div class="product-image" style='
+    background: url("{{ item.product_image.url }}");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: 2.5em;
+    background-position-x:center;
+    padding: 6em;'></div>
+                        <div class="product-info">
+                            <div class="product-name">{{ item.name }}</div>
+                            <div class="product-price">₹ {{ item.rate }}</div>
+                            <div class="buttons">
+                                {% if company.user == request.user %}
+                                <form action="{% url 'view' product_slug=item.slug %}">{% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="View">
+                                </form>
+                                <form action="{% url 'edit' product_slug=item.slug %}">{% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="Edit">
+                                </form>
+                                <form action="{% url 'delete' product_slug=item.slug %}">{% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="Delete">
+                                </form>
+                                {% else %}
+                                <form action="{% url 'view' product_slug=item.slug %}">{% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="View">
+                                </form>
+                                <form action="#">{% csrf_token %}
+                                    <input type="submit" class="btn btn-primary" value="Add To Cart">
+                                </form>
+                                {% endif %}
+
+                                <!--<button>View</button>
+                                <button>Add to Cart</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+</body>
+    
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+    {% endblock content %}

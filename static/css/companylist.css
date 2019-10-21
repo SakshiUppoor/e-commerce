@@ -1,0 +1,41 @@
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+}
+
+.item:nth-child(3n+2), .item:nth-child(3n+1) {
+    border-right: #acacac6c solid 1px;
+}
+
+.company-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+.logo {
+    height: 125px;
+    border-radius: 50%;
+}
+
+.item {
+    padding: 1.5em;
+}
+
+.go-to-btn {
+    margin-top: 1em;
+}
+
+.go-to-btn > button {
+    background: #3853d8;
+    border: none;
+    border-radius: 0.8em;
+    font-size: 1.2em;
+    padding: 0.7em 1em;
+}
+
+.go-to-btn > button > a {
+    text-decoration: none;
+    color: #fff;
+}

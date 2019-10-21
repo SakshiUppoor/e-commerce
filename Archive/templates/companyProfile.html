@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/companyProfile.css' %}">
+<style>
+    .header {
+        background: url({{ company.header.url }})
+    }
+</style>
+{% endblock css %}
+{% block content %}
+    <div class="header">
+        <h1>{{ company }}</h1>
+    </div>
+{% endblock content %}

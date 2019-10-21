@@ -1,0 +1,60 @@
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: grid !important;
+    grid-template-columns: 1fr 20fr 1fr 1fr 1fr;
+    background: #ffffff34;
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.29);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5000;
+    transition: all 0.1s ease-in-out;
+}
+
+nav>div:not(:first-child) {
+    border-left: 2px solid #ffffff56;
+}
+
+nav> div {
+    padding: 1em;
+}
+
+.main {
+    padding-top: 10em;
+}
+
+.bg {
+    background: #3853d8;
+    height: 30vh;
+    content: ' ';
+}
+
+
+.info {
+    position: relative;
+    bottom: 4em;
+    margin: 0 5em;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.29);
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidenav {
+    background: rgb(160, 160, 160);
+}

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/base2.css' %}">
+    {% endblock css %}
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Company</title>
+</head>
+<style>
+{% block style %}
+{% endblock style %}
+</style>
+
+<body>
+    <div class="my-navbar-fixed-top scrolled">
+        <div class="search">
+            <ion-icon name="search"></ion-icon>
+        </div>
+        <div class="title">Bazaar</div>
+        <div class="profile">
+            <ion-icon name="person"></ion-icon>
+        </div>
+        <div class="fav">
+            <ion-icon name="heart-empty"></ion-icon>
+        </div>
+        <div class="cart">
+            <ion-icon name="cart"></ion-icon>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock content %}
+</body>
+{% block script %}
+
+{% endblock script %}
+</html>

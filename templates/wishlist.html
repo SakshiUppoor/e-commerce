@@ -1,0 +1,64 @@
+{% extends 'home2.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+{% endblock css %}
+
+
+{% block style %}
+.product-image {
+background: url("{{ product.product_image.url }}");
+background-repeat: no-repeat;
+height: 50vh;
+opacity: 0.8;
+background-size: contain !important;
+content: ' ';
+background-position: center center;
+}
+{% endblock style %}
+
+{% block heading %}
+Your wishlist
+{% endblock heading %}
+
+
+{% block info %}
+{% if wishListItems.count == 0 %}
+<div class="none">No items in wishlist.</div>
+{% else %}
+{% for item in wishListItems %}
+<div class="cart-columns">
+    <div class="product-image">
+        <img src="{{item.product.product_image.url}}" height="100px">
+    </div>
+    <div class="product-name">{{item.product.name}}</div>    
+    <div class="product-description">{{item.product.description}}</div>
+    <div class="product-rate">₹ {{item.product.rate}}</div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+{% endblock info %}
+
+{% block script %}
+<script>
+    function subtract() {
+        label = document.getElementById("quantity");
+        q = Number(label.value);
+        if (q > 1) {
+            q = q - 1;
+            label.value = q;
+        }
+    }
+
+    function add() {
+        label = document.getElementById("quantity");
+        q = Number(label.value);
+        q = q + 1;
+        label.value = q;
+    }
+
+</script>
+{% endblock script %}

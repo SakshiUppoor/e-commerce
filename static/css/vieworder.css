@@ -1,0 +1,276 @@
+.cart-columns {
+    padding: 2em 7em;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 2fr;
+    vertical-align: middle;
+    border-bottom: #acacac6c solid 1px;
+    font-weight: 700;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number], .quantity {
+    border: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.plus, .minus, .quantity {
+    display: inline-block;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    font-weight: 600;
+    border: none;
+}
+
+.plus:focus, .minus:focus, .quantity:focus {
+    outline: none;
+}
+
+.quantity-counter {
+    border: #acacac6c solid 1.5px;
+    border-radius: 2em;
+    padding: 1em 0.8em;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+     -ms-user-select: none;
+    user-select: none;
+    height: 1em;
+    padding-bottom: 1.8em;
+    margin-top: 1em;
+ }
+ 
+
+.plus, .minus {
+    border: none;
+    background: none;
+    color: #acacac;
+    cursor: pointer;
+}
+
+.quantity-counter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cart-columns > div {
+    vertical-align: middle;
+    height: 100%;
+}
+
+.product-name, .product-rate, .product-cost, .qty, .save {
+    margin-top: 1.5em;
+}
+
+.product-image {
+    text-align: center;
+}
+
+.save > button {
+    background: #fff;
+    border: none;
+    color: #acacac;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.save > button:focus {
+    outline: none;
+}
+
+.product-rate {
+    color: #acacac;
+    font-size: 1.3em;
+    margin-top: 1.2em;
+}
+
+.product-cost {
+    color: #3853d8;
+    padding-left: 3em;
+    font-size: 1.3em;
+    margin-top: 1.2em;
+}
+
+.product-name {
+    font-size: 1.2em;
+}
+
+.heading {
+    background: #3853d8;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.5em;
+}
+
+.info {
+    margin-bottom: 2em;
+}
+
+.none {
+    color: #acacac;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.5em;
+    padding: 2.8em;
+}
+
+.total-row {
+    text-align: center;
+    font-weight: bold;
+    padding: 2em;
+}
+
+.total {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.total-cost {
+    color: #3853d8;
+}
+
+.total-row > div {
+    display: inline-block;
+    padding: 0 2em;
+    font-size: 1.5em;
+}
+
+.checkout, .submit {
+    background: #3853d8;
+    border: none;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 1.1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.checkout > ion-icon {
+    font-size: 1.2em;
+    padding-right: 0.2em;
+}
+
+.checkout:focus {
+    outline: none;
+}
+
+
+
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    top: 10%;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  margin: auto auto;
+  width: 30%;
+}
+
+.edit-form {
+  padding: 1.5em;
+  border: 1px solid #888;
+  background-color: #fefefe;
+  border-radius: 0.5em;
+}
+
+/* The Close Button */
+.close {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  border-radius: 0.5em;
+  max-width: 1.5em;
+  max-height: 1.5em;
+  padding: 0 0.3em;
+  padding-top: 0.2em;
+  margin-left: 0.2em;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.192);
+  cursor: pointer;
+}
+
+.myfieldclass {
+  background: rgb(233, 233, 233);
+  border-radius: 0.6em;
+  border:  solid #fff 2px;
+  padding: 0.5em 0.1em;
+  width: 100%;
+}
+
+.myfieldclass:focus {
+  border:  solid #3853d8 2px;
+  outline: none;
+  background: #fff;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.form-group {
+  padding: 0.5em 0;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  background: rgb(233, 233, 233);
+  color: rgb(94, 94, 94);
+  border-radius: 0.6em;
+  border: none;
+  padding: 0.3em 0.5em;
+  font-size: 0.8em;
+}
+
+.submit {
+  background: #3853d8;
+  color: white;
+  border-radius: 0.6em;
+  border: none;
+  padding: 1em 0;
+  margin-top: 2em;
+  font-size: 0.9em;
+  width: 80%;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+.submit {
+  text-align: center;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10000; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0, 0, 0, 0.541); 
+  }
+  

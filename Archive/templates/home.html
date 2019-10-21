@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css%}
+<style>
+.product-group {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+}
+</style>
+{% endblock css %}
+
+{% block content %}
+{% for company in companies %}
+  <h1>Products by {{company}}</h1>
+  {% if company.user == request.user %}
+    <form action="{% url 'add' %}">{% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Add Product">
+  </form>
+  {% endif %}
+  {% for product in products %}
+  {% if product.company == company %}
+  <div class="product-group">
+    <div>{{ product.name }}</div>
+    <div>{{ product.description }}</div>
+    <div>{{ product.rate }}</div>
+    <div>{{ product.in_stock }}</div>
+    {% if company.user == request.user %}
+    <form action="{% url 'view' product_slug=product.slug %}">{% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="View">
+    </form>
+    <form action="{% url 'edit' product_slug=product.slug %}">{% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Edit">
+    </form>
+    <form action="{% url 'delete' product_slug=product.slug %}">{% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Delete">
+    </form>
+    {% else %}
+    <form action="{% url 'view' product_slug=product.slug %}">{% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="View">
+    </form>
+    <form action="#">{% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Add To Cart">
+    </form>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endfor %}
+{% endblock content %}

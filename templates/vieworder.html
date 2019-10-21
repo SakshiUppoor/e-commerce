@@ -1,0 +1,54 @@
+{% extends 'home2.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/vieworder.css' %}">
+{% endblock css %}
+
+
+{% block style %}
+.product-image {
+background: url("{{ product.product_image.url }}");
+background-repeat: no-repeat;
+height: 50vh;
+opacity: 0.8;
+background-size: contain !important;
+content: ' ';
+background-position: center center;
+}
+{% endblock style %}
+
+{% block heading %}
+Order #{{orderItems.first.order.id}}
+{% endblock heading %}
+
+
+{% block info %}
+<div class="heading">Order placed successfully!</div>
+{% for item in orderItems %}
+<div class="cart-columns">
+    <div class="product-image">
+        <img src="{{item.product.product_image.url}}" height="100px">
+    </div>
+    <div class="product-name">{{item.product.name}}</div>
+    <div class="product-rate">₹ {{item.product.rate}}</div>
+    <div class="qty">
+        {{item.quantity}}
+    </div>
+    <div class="product-cost">₹ {{item.order_item_cost}}</div>
+    {% endfor %}
+</div>
+
+<div class="total-row">
+    <div class="total">Total: </div>
+    <div class="total-cost">₹ {{orderItems.first.order.total}}</div>
+</div>
+
+<div class="total-row">
+    <div class="total">Billing Address: </div>
+    <div class="total-cost">{{orderItems.first.order.address}}</div>
+</div>
+{% endblock info %}
+
+{% block script %}
+{% endblock script %}

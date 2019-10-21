@@ -1,0 +1,34 @@
+{% extends 'home2.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/companylist.css' %}">
+{% endblock css %}
+
+
+{% block heading %}
+Companies
+{% endblock heading %}
+
+
+{% block info %}
+        {% for company in companies %}
+        <div class="item">
+            <img class="logo" src="{{company.user.profile_images.url}}">
+            <div class="company-name">
+                {{company.user}}
+            </div>
+            <div class="desc">
+                {% if company.description %}
+                {{company.description}}
+                {% endif %}
+            </div>
+            <div class="go-to-btn">
+                <button><a href="{% url 'profile' user_id=company.user.id %}"> Go to shop</a></button>
+            </div>
+        </div>
+        {% endfor %}
+{% endblock info %}
+
+{% block script %}
+{% endblock script %}
