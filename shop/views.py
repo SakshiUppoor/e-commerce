@@ -348,6 +348,8 @@ def cart(request):
         }
         return render(request, 'cart.html', context)
     else:
+        if request.user.is_company:
+            return(HttpResponseRedirect(reverse('user_logout')))
         return(HttpResponseRedirect(reverse('user_login')))
 
 
@@ -359,8 +361,9 @@ def wishlist(request):
         }
         return render(request, 'wishlist.html', context)
     else:
+        if request.user.is_company:
+            return(HttpResponseRedirect(reverse('user_logout')))
         return(HttpResponseRedirect(reverse('user_login')))
-
 
 
 def orders(request):
@@ -375,9 +378,12 @@ def viewOrder(request, id):
         }
         return render(request, 'vieworder.html', context)
     else:
+        if request.user.is_company:
+            return(HttpResponseRedirect(reverse('user_logout')))
         return(HttpResponseRedirect(reverse('user_login')))
 
-def filterByCategory(request, user_id,category_id):
+
+def filterByCategory(request, user_id, category_id):
     this_user = User.objects.get(id=user_id)
     if this_user.is_company:
         company = Company.objects.filter(user=this_user).first()
@@ -401,7 +407,8 @@ def filterByCategory(request, user_id,category_id):
                 company.user.save()
                 company.save()
         category = Category.objects.get(id=category_id)
-        items = Product.objects.filter(company=this_user.company,subcategory=category.subcategory)
+        items = Product.objects.filter(
+            company=this_user.company, subcategory=category.subcategory)
         context = {
             'items': items,
             'company': company,
@@ -418,7 +425,7 @@ def filterByCategory(request, user_id,category_id):
     return render(request, "404.html")
 
 
-def filterBySubcategory(request, user_id,subcategory_id):
+def filterBySubcategory(request, user_id, subcategory_id):
     this_user = User.objects.get(id=user_id)
     if this_user.is_company:
         company = Company.objects.filter(user=this_user).first()
@@ -442,7 +449,8 @@ def filterBySubcategory(request, user_id,subcategory_id):
                 company.user.save()
                 company.save()
         subcategory = Subcategory.objects.get(id=subcategory_id)
-        items = Product.objects.filter(company=this_user.company,subcategory=subcategory)
+        items = Product.objects.filter(
+            company=this_user.company, subcategory=subcategory)
         context = {
             'items': items,
             'company': company,
@@ -457,4 +465,3 @@ def filterBySubcategory(request, user_id,subcategory_id):
         }
         return render(request, "customerProfile.html", context)
     return render(request, "404.html")
-
