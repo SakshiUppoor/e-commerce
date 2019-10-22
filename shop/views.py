@@ -178,7 +178,7 @@ def addProduct(request):
                         user=request.user).first()
                     new_product.subcategory = form.cleaned_data['subcategory']
                     new_product.save()
-                    return HttpResponseRedirect(reverse('home'))
+                    return HttpResponseRedirect(reverse('profile', kwargs={'user_id': request.user.id}))
             context = {
                 'categories': Category.objects.all(),
                 'subcategories': Subcategory.objects.all(),
@@ -199,7 +199,7 @@ def editProduct(request, product_slug):
                 product.rate = request.POST['rate']
                 product.in_stock = request.POST['in_stock']
                 product.save()
-                return HttpResponseRedirect(reverse('home'))
+                return HttpResponseRedirect(reverse('profile', kwargs={'user_id': request.user.id}))
             else:
                 product = Product.objects.filter(slug=product_slug)[0]
                 context = {
@@ -214,7 +214,7 @@ def deleteProduct(request, product_slug):
     if request.user.is_company:
         if request.method == "POST":
             Product.objects.filter(slug=product_slug).delete()
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('profile', kwargs={'user_id': request.user.id}))
         else:
             product = Product.objects.filter(slug=product_slug)[0]
             context = {
