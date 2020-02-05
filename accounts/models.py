@@ -34,6 +34,6 @@ class Company(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_lectures(sender, **kwargs):
+def create_companies(sender, **kwargs):
     if kwargs['created'] and kwargs.get('instance').is_company == True:
         company = Company.objects.create(user=kwargs.get('instance'))

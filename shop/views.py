@@ -6,6 +6,7 @@ from .forms import CreateNewProduct, CompanyProfile, EditProduct
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.views.generic import ListView
+import requests
 
 User = get_user_model()
 
@@ -465,3 +466,31 @@ def filterBySubcategory(request, user_id, subcategory_id):
         }
         return render(request, "customerProfile.html", context)
     return render(request, "404.html")
+
+
+def search(request):
+    if request.method=="POST":
+        print(request.POST)
+        if 'search' in request.POST:
+            print("hi")
+            query = request.POST['query']
+            query_list = []
+            if 'searched_for' in request.COOKIES:
+                query_list = request.COOKIES['searched_for'] + "," + query
+            else:
+                query_list = query
+            response = HttpResponseRedirect(reverse('search'))
+            response.set_cookie('searched_for', query_list)
+            return response
+    print(request.COOKIES)
+    query_list = []
+    if 'searched_for' in request.COOKIES:
+        query_list = request.COOKIES['searched_for']
+    print(query_list)
+    if len(query_list) is not 0:
+        query_list = query_list.split(',')
+    context = {
+        'query_list': query_list,
+    }
+    return render(request, 'search.html', context)
+ 

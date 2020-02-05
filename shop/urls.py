@@ -16,6 +16,7 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name="wishlist"),
     path('orders/', views.orders, name="orders"),
     path('orders/<int:id>', views.viewOrder, name="order"),
+    path('search/', views.search, name="search"),
 ]
 
 '''path('profile/<int:user_id>/category/<int: category_id>/',

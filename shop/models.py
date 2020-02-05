@@ -3,7 +3,6 @@ from django.db.models.signals import pre_save, post_save
 from django.utils.text import slugify
 from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser
-from django.dispatch import receiver
 
 
 class User(AbstractUser):
@@ -85,7 +84,7 @@ def create_slug(instance, new_slug=None):
     slug = slugify(instance.name)
     if new_slug is not None:
         slug = new_slug
-    qs = Product.objects.filter(slug=slug)
+    qs = Product.objects.filter(slug=slug).order_by("-id")
     exists = qs.exists()
     if exists:
         new_slug = "%s-%s" % (slug, qs.first().id)
