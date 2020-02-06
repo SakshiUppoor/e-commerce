@@ -54,6 +54,8 @@ def register(request):
             password1 = request.POST['password1']
             password2 = request.POST['password2']
             country = request.POST['country']
+            twitter = request.POST['twitter']
+            facebook = request.POST['facebook']
             if not User.objects.filter(email=email).exists():
                 if password1 == password2:
                     '''if User.objects.filter(username=username).exists():
@@ -64,7 +66,7 @@ def register(request):
                         return HttpResponseRedirect(reverse('signup'))
                     else:'''
                     user = User.objects.create_user(
-                        username=email, email=email, password=password1, first_name=first_name, last_name=last_name, is_customer=True, country=country)
+                        username=email, email=email, password=password1, first_name=first_name, last_name=last_name, is_customer=True, country=country, twitter=twitter, facebook=facebook)
                     user.save()
                     return HttpResponseRedirect(reverse('user_login'))
                 else:
@@ -591,7 +593,7 @@ def payment(request):
 
 
 def get_recommended(request):
-    results = twitter.start("VisualCoder")
+    results = twitter.start(request.user.twitter.split('/')[1])
     if 'searched_for' in request.COOKIES:
         print("_________________________")
         print("COOKIES:")
@@ -612,9 +614,12 @@ def get_recommended(request):
     context = {
         "products": products,
     }
-    return products
+    if len(products)<6:
+        return products
+    else:
+        return products[:6]
 
-'''for product in Product.objects.all():
+for product in Product.objects.all():
     product.discount="0.0"
     product.discounted_rate=product.rate
-    product.save()'''
+    product.save()
