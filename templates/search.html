@@ -124,7 +124,7 @@
                       </div>
                     </div>
                     {% for category in categories %}
-                    <a class="" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <a href="" class="" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
     {{category}}
     <i class="material-icons">keyboard_arrow_down</i>
   </a> <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree" style="">
@@ -145,6 +145,39 @@
                       </div>
                     </div>
 {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+              {% for p in products %}
+                <div class="col-md-4">
+                  <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
+                    <div class="card-header card-header-image">
+                      <a href="#">
+                        <img src="{{p.product_image.url}}" alt="...">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <a href="{% url 'view' product_slug=p.slug %}">
+                        <h4 class="card-title">{{p.name}}</h4>
+                      </a>
+                      <p class="description">
+                        {{p.description}}
+                      </p>
+                    </div>
+                    <div class="card-footer justify-content-between">
+                      <div class="price-container">
+                        <span class="price"> Rs {{p.discounted_rate}}</span>
+                      </div>
+                      <button class="btn btn-rose btn-link btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="" data-placement="left" data-original-title="Remove from wishlist">
+                        <i class="material-icons">favorite</i>
+                      </button>
+                    </div>
+                  </div> <!-- end card -->
+                </div>
+                {% endfor %}
                 <div class="col-md-3 ml-auto mr-auto">
                   <button rel="tooltip" class="btn btn-rose btn-round" data-original-title="" title="">Load more...</button>
                 </div>

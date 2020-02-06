@@ -46,7 +46,9 @@ def create_components(sender, **kwargs):
     elif kwargs['created'] and kwargs.get('instance').is_customer == True:
         cart = Cart.objects.create(user=kwargs.get('instance'))
     if kwargs['created']:
+        list = holiday.get_holidays(kwargs.get('instance').country)
         list = holiday.get_holidays(kwargs.get('instance').country)["holidays"]
+
         for l in list:
             new_c, created = Campaign.objects.get_or_create(uuid=l["uuid"])
             if created == True:
@@ -180,16 +182,19 @@ class Review(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
 
 
+'''
+
 @receiver(post_save, sender=Review)
 def post_save_rating_receiver(sender, instance, *args, **kwargs):
-    product = kwargs.get('instance').product
+    product = kwargs.get('instance')
+    print(product)
     reviews = Review.objects.filter(product=product)
     count = 0
     rating_sum = 0
     for review in reviews:
         rating_sum += review.rating
         count += 1
-    product.rating = rating_sum/count
+    product.rating = rating_sum/count'''
 
 
 class Campaign(models.Model):

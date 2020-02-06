@@ -95,16 +95,18 @@
    
         <div class="container">
           <div class="row pt-4 mb-0">
-          
+          {% for category in categories %}
               <div class="dropdown">
-                <button class="btn btn-rose btn-round btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shoes</button>
+                <button class="btn btn-rose btn-round btn-lg dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{category}}</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a  class="dropdown-item" href="#">Action</a>
-                  <a   class="dropdown-item" href="#">Another action</a>
-                  <a  class="dropdown-item" href="#">Something else here</a>
+                {% for subcategory in subcategories %}
+                {% if subcategory.category == category %}
+                  <a  class="dropdown-item" href="{% url 'searchq' query=subcategory %}">{{ subcategory }}</a>
+                  {% endif %}
+                {% endfor %}
                 </div>
               </div>
-              
+            {% endfor %}
           
             
           </div>
@@ -112,7 +114,7 @@
     
     <div class="section mt-0 pt-0">
       <div class="container">
-        <h2 class="section-title">Top Picks For You !!</h2>
+        <h2 class="section-title">Top Picks For You</h2>
             <div class="row">
             {% for p in recommended %}
               <div class="col-md-4"> 

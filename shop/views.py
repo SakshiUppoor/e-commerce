@@ -46,12 +46,14 @@ def register(request):
         print(request.POST['email'])
         print(request.POST['password1'])
         print(request.POST['password2'])
+        print(request.POST['country'])
         if 'customerCreate' in request.POST:
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             email = request.POST['email']
             password1 = request.POST['password1']
             password2 = request.POST['password2']
+            country = request.POST['country']
             if not User.objects.filter(email=email).exists():
                 if password1 == password2:
                     '''if User.objects.filter(username=username).exists():
@@ -62,7 +64,7 @@ def register(request):
                         return HttpResponseRedirect(reverse('signup'))
                     else:'''
                     user = User.objects.create_user(
-                        username=email, email=email, password=password1, first_name=first_name, last_name=last_name, is_customer=True)
+                        username=email, email=email, password=password1, first_name=first_name, last_name=last_name, is_customer=True, country=country)
                     user.save()
                     return HttpResponseRedirect(reverse('user_login'))
                 else:
@@ -110,7 +112,7 @@ def user_login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect(reverse('companylist'))
+            return redirect(reverse('home'))
         else:
             messages.info(request, 'Username or password incorrect')
             return redirect('user_login')
@@ -256,12 +258,12 @@ def deleteProduct(request, product_slug):
             return render(request, "deleteProduct.html", context)
     return render(request, "404.html")
 
-
 def viewProduct(request, product_slug):
-    product = Product.objects.filter(slug=product_slug)[0]
+    product = Product.objects.filter(slug=product_slug).first()
     if request.method == "POST":
         if request.user.is_authenticated:
             if 'addToCart' in request.POST:
+
                 cartitem = CartItem.objects.filter(
                     product=product, cart=request.user.cart)
                 print(cartitem.exists)
@@ -297,24 +299,20 @@ def viewProduct(request, product_slug):
 
         else:
             return render(request, 'login.html')
-
+    reviews=Review.objects.filter(product=product)
+    if len(Product.objects.filter(subcategory__category=product.subcategory.category))<=4:
+        recommend = Product.objects.filter(subcategory__category=product.subcategory.category)
+    else:
+        recommend = Product.objects.filter(subcategory__category=product.subcategory.category)[:4]
     context = {
+        'reviews':Review.objects.filter(product=product),
         'product': product,
+        'recommend':recommend,
         'wishitem': WishlistItem.objects.filter(
-            user=request.user, product=product).exists,
+        user=request.user, product=product).exists,
+        'reviews': reviews
     }
-    return render(request, "product-page.html", context)
-
-
-class ProductView(ListView):
-    template_name = "home.html"
-    model = Product
-    context_object_name = "products"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['companies'] = Company.objects.all()
-        return context
+    return render(request, "review.html", context)
 
 
 def companylist(request):
@@ -585,7 +583,7 @@ def checkout(request, id):
     context = {
         'order': Order.objects.get(id=id),
     }
-    return render(request, 'checkout.html', context)
+    return render(request, 'address.html', context)
 
 
 def payment(request):
@@ -595,6 +593,15 @@ def payment(request):
 def get_recommended(request):
     results = twitter.start("VisualCoder")
     if 'searched_for' in request.COOKIES:
+        print("_________________________")
+        print("COOKIES:")
+        print(request.COOKIES['searched_for'])
+        print("_________________________")
+
+        if ',' in request.COOKIES['searched_for']:
+            results.extend(request.COOKIES['searched_for'].split(','))
+        else:
+            results.append(request.COOKIES['searched_for'])
         print(request.COOKIES['searched_for'])
     print(results)
     products = Product.objects.none()

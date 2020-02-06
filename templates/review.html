@@ -1,0 +1,475 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    ShopEasy
+  </title>
+  <link rel="stylesheet" href="st">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'assets/css/material-kit.css' %}" rel="stylesheet" />
+  <!-- CSS Just for assets/demo purpose, don't include it in your project -->
+  <!-- <link href="{% static 'assets/demo/assets/demo.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/demo/vertical-nav.css' %}" rel="stylesheet" /> -->
+</head>
+
+<body class="product-page sidebar-collapse">
+  <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="#">
+         ShopEasy </a>
+         
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <form class="form-inline mx-auto ">
+            <div class="form-group no-border">
+              <input style="width: 245%;" type="text" class="form-control " placeholder="Search">
+            </div>
+            <button style="position: relative;left: 100%;" type="submit" class="btn btn-white btn-just-icon btn-round ">
+                <i class="material-icons">search</i>
+            </button>
+        </form>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">tag_faces</i>
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="" class="dropdown-item">
+                <!-- <i class="material-icons">line_style</i> F! -->
+                <div>
+                  <img style="border-radius: 50%;width: 30%;height: 30%;" src="{% static 'assets/img/placeholder.jpg' %}" alt="">
+                  <div class="mt-2">
+                    <p>Username</p>
+                  </div>
+
+                </div>
+              </a>
+              <a href="" class="dropdown-item">
+                <i class="material-icons">favorite</i> Wishlist
+              </a>
+              <a href="" class="dropdown-item">
+                <i class="material-icons">layers</i> Log Out
+              </a>
+              
+            </div>
+          </li>
+
+          <li class="button-container nav-item iframe-extern">
+            <a href="" target="_blank" class="btn  btn-rose   btn-round btn-block">
+              <i class="material-icons">shopping_cart</i> Buy Now
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header header-filter" data-parallax="true" filter-color="rose" style="background-image: url('  ');">
+    
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="main main-raised main-product">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="tab-content">
+              <div class="tab-pane" id="product-page1">
+                 <img src=" {{ product.product_image.url }} ">
+              </div>
+              <div class="tab-pane active" id="product-page2">
+                <img src="{{product.product_image.url }}">
+              </div>
+              <div class="tab-pane" id="product-page3">
+                <img src="{% static 'assets/img/examples/product3.jpg' %}">
+              </div>
+              <div class="tab-pane" id="product-page4">
+              
+              </div>
+            </div>
+            <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselassets/demo1">
+              <li class="nav-item">
+                <a href="#product-page1" class="nav-link" data-toggle="tab">
+                  <img src="{{ product.product_image.url }}">
+                </a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <h2 class="title">{{product.name}}</h2>
+            <h3 class="main-price">${{product.rate}}</h3>
+            <div id="accordion" role="tablist">
+              <div class="card card-collapse">
+                <div class="card-header" role="tab" id="headingOne">
+                  <h5 class="mb-0">
+                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Description
+                      <i class="material-icons">keyboard_arrow_down</i>
+                    </a>
+                  </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <p>{{product.description}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-collapse">
+                <div class="card-header" role="tab" id="headingTwo">
+                  <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Seller Information
+                      <i class="material-icons">keyboard_arrow_down</i>
+                    </a>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    {{product.company.user.first_name}}
+                  </div>
+                </div>
+              </div>
+              <div class="card card-collapse">
+                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    <ul>
+                      <li>Storm and midnight-blue stretch cotton-blend</li>
+                      <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>
+                      <li>Two button fastening</li>
+                      <li>84% cotton, 14% nylon, 2% elastane</li>
+                      <li>Dry clean</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pick-size">
+            <form method="post">
+            {% csrf_token %}
+              <div class="col-md-6 col-sm-6">
+                <label>Quantity</label>
+                <div class="btn-group btn-group-sm">
+                  <div class="btn btn-round btn-info" onclick="subtract()"> <i class="material-icons">remove</i> </div>
+                  <input type="text" name="qty" value="1" id="quantity" style="width:100px; padding:0px 10px; border:none; text-align:center;">
+                  <div onclick="add()" class="btn btn-round btn-info"> <i class="material-icons">add</i> </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pull-right">
+              <button type="submit" name="addToCart" class="btn btn-rose btn-round">Add to Cart &#xA0;<i class="material-icons">shopping_cart</i></button>
+            </div>
+            </form>
+          </div>
+        </div>
+
+        
+        <div class="section">
+
+          <h2>Reviews</h2>
+          {% for r in reviews %}
+          <div class="media">
+            <a class="float-left" href="#pablo">
+              <div class="avatar">
+                <img class="media-object" alt="64x64" src="{{r.user.profile_images.url}}">
+              </div>
+            </a>
+            <div class="media-body">
+            <h4 class="media-heading">
+              <div style="font-size: 2em">{{r.title}}</div>
+                <a href="#pablo" class="btn btn-danger btn-link float-right">
+                  <i class="material-icons">star</i> {{r.rating}}
+                </a></h4> 
+              {{r.user.first_name}}<small>· 2 Days Ago</small>
+                
+              
+              <p>{{r.comment}}</p>
+              <div class="media-footer">
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <br>
+          <div class="media media-post">
+            <a class="author float-left" href="#pablo">
+              <div class="avatar">
+                <img class="media-object" alt="64x64" src="{{request.user.profile_images.url}}">
+              </div>
+            </a>
+            <div class="media-body">
+            <form method="post">
+            {% csrf_token %}
+              <div class="input-group">
+    <input type="text" class="form-control" placeholder="Title" name="title">
+  </div>
+              <span class="bmd-form-group"><textarea class="form-control" placeholder="Write some nice stuff or nothing..." rows="6" name="comment"></textarea></span>
+              <div class="media-footer">
+                <input type="hidden" name="product" value="{{product.slug}}" />
+                
+                <button  name="review" class="btn btn-primary btn-wd float-right" type="submit">Post Review</button>
+                <span style="float: right;">
+                  <div class="dropdown">
+                    <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlSelect1" name="rating">
+                      1-5
+                      <option class="dropdown-item" value="1" href="#">1</option>
+                      <option class="dropdown-item"  value="2" href="#">2</option>
+                      <option class="dropdown-item"  value="3" href="#">3</option>
+                      <option class="dropdown-item"  value="4" href="#">4</option>
+                      <option class="dropdown-item"  value="5" href="#">5</option>
+                    </select>
+                  </div>
+                </span>
+              </div>
+              </span>
+            </form>
+            </div>
+          </div>
+        </div>
+
+
+      <div class="features text-center">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-info">
+                <i class="material-icons">local_shipping</i>
+              </div>
+              <h4 class="info-title">2 Days Delivery </h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-success">
+                <i class="material-icons">verified_user</i>
+              </div>
+              <h4 class="info-title">Refundable Policy</h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info">
+              <div class="icon icon-rose">
+                <i class="material-icons">favorite</i>
+              </div>
+              <h4 class="info-title">Popular Item</h4>
+              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="related-products">
+        <h3 class="title text-center">You may also be interested in:</h3>
+        <div class="row">
+        {% for r in recommend %}
+          <div class="col-lg-3 col-md-6" style="display:inline-block">
+            <div class="card card-product">
+              <div class="card-header card-header-image">
+                <a href="#pablo">
+                  <img class="img" src="{{r.product_image.url}}">
+                </a>
+              </div>
+              <div class="card-body">
+                <h6 class="card-category text-rose">Trending</h6>
+                <h4 class="card-title">
+                  <a href="#pablo">{{r.name}}</a>
+                </h4>
+                <div class="card-description">
+                 {{r.description}}
+                </div>
+              </div>
+              <div class="card-footer justify-content-between">
+                <div class="price">
+                  <h4>Rs. {{r.rate}}</h4>
+                </div>
+                <div class="stats">
+                  <button type="button" rel="tooltip" title="Saved to Wishlist" class="btn btn-just-icon btn-link btn-rose">
+                    <i class="material-icons">favorite</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer footer-black footer-big">
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>About Us</h5>
+            <p>Creative Tim is a startup that creates design tools that make the web development process faster and easier. </p>
+            <p>We love the web and care deeply for how users interact with a digital product. We power businesses and individuals to create better looking web projects around the world. </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Social Feed</h5>
+            <div class="social-feed">
+              <div class="feed-line">
+                <i class="fa fa-twitter"></i>
+                <p>How to handle ethical disagreements with your clients.</p>
+              </div>
+              <div class="feed-line">
+                <i class="fa fa-twitter"></i>
+                <p>The tangible benefits of designing at 1x pixel density.</p>
+              </div>
+              <div class="feed-line">
+                <i class="fa fa-facebook-square"></i>
+                <p>A collection of 25 stunning sites that you can use for inspiration.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h5>Instagram Feed</h5>
+            <div class="gallery-feed">
+              <img src="{% static 'assets/img/faces/card-profile6-square.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/christian.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/card-profile4-square.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/card-profile1-square.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/marc.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/kendall.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/card-profile5-square.jpg' %}" class="img img-raised rounded" alt="">
+              <img src="{% static 'assets/img/faces/card-profile2-square.jpg' %}" class="img img-raised rounded" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <ul class="float-left">
+        <li>
+          <a href="#pablo">
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="#pablo">
+            Presentation
+          </a>
+        </li>
+        <li>
+          <a href="#pablo">
+            Discover
+          </a>
+        </li>
+        <li>
+          <a href="#pablo">
+            Payment
+          </a>
+        </li>
+        <li>
+          <a href="#pablo">
+            Contact Us
+          </a>
+        </li>
+      </ul>
+      <div class="copyright float-right">
+        Copyright &#xA9; <script>
+          document.write(new Date().getFullYear())
+        </script> Creative Tim All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+  <!--   Core JS Files   -->
+  <script src="{% static 'assets/js/core/jquery.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'assets/js/core/popper.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'assets/js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'assets/js/plugins/moment.min.js' %}"></script>
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="{% static 'assets/js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="{% static 'assets/js/plugins/nouislider.min.js' %}" type="text/javascript"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="{% static 'assets/js/plugins/bootstrap-tagsinput.js' %}"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="{% static 'assets/js/plugins/bootstrap-selectpicker.js' %}" type="text/javascript"></script>
+  <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="{% static 'assets/js/plugins/jasny-bootstrap.min.js' %}" type="text/javascript"></script>
+  <!--	Plugin for Small Gallery in Product Page -->
+  <script src="{% static 'assets/js/plugins/jquery.flexisel.js' %}" type="text/javascript"></script>
+  <!-- Plugins for presentation and navigation  -->
+  <script src="{% static 'assets/demo/modernizr.js' %}" type="text/javascript"></script>
+  <script src="{% static 'assets/demo/vertical-nav.js' %}" type="text/javascript"></script>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js' %}"></script>
+  <!--
+  
+  
+  
+  
+
+  <!-- Js With initialisations For assets/demo Purpose, Don't Include it in Your Project -->
+  <script src="{% static 'assets/demo.js' %}" type="text/javascript"></script>
+  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'assets/js/material-kit.js' %}" type="text/javascript"></script>
+  <script>
+    $(document).ready(function() {
+      $("#flexiselassets/demo1").flexisel({
+        visibleItems: 4,
+        itemsToScroll: 1,
+        animationSpeed: 400,
+        enableResponsiveBreakpoints: true,
+        responsiveBreakpoints: {
+          portrait: {
+            changePoint: 480,
+            visibleItems: 3
+          },
+          landscape: {
+            changePoint: 640,
+            visibleItems: 3
+          },
+          tablet: {
+            changePoint: 768,
+            visibleItems: 3
+          }
+        }
+      });
+    });
+  </script>
+
+<script>
+    function subtract() {
+        label = document.getElementById("quantity");
+        q = Number(label.value);
+        if (q > 1) {
+            q = q - 1;
+            label.value = q;
+        }
+    }
+
+    function add() {
+        label = document.getElementById("quantity");
+        q = Number(label.value);
+        q = q + 1;
+        label.value = q;
+    }
+
+</script>
+-->
+</body>
+
+</html>
