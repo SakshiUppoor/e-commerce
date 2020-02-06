@@ -7,15 +7,9 @@ import requests
 import sys
 import json
 from rake_nltk import Rake
-
-
-def usage():
-    msg = """
-    Please use the below command to use the script.
-    python script_name.py twitter_username
-    """
-    print(msg)
-    sys.exit(1)
+import re
+import string
+from time import sleep
 
 
 def get_tweet_text(tweet):
@@ -33,10 +27,10 @@ def get_tweet_text(tweet):
 def get_this_page_tweets(soup):
     tweets_list = list()
     tweets = soup.find_all("li", {"data-item-type": "tweet"})
-    count=0
+    count = 0
     for tweet in tweets:
-        count+=1
-        if count==10:
+        count += 1
+        if count == 10:
             break
         tweet_data = None
         try:
@@ -55,14 +49,16 @@ def get_this_page_tweets(soup):
 
 def get_tweets_data(username, soup):
     tweets_list = list()
+    tweets_list.reverse()
     tweets_list.extend(get_this_page_tweets(soup))
 
     next_pointer = soup.find(
         "div", {"class": "stream-container"})["data-min-position"]
 
-    count=0
-    while count<10:
-        count+=1
+    count = 0
+    while count < 10:
+        sleep(2)
+        count += 1
         next_url = "https://twitter.com/i/profiles/show/" + username + \
                    "/timeline/tweets?include_available_features=1&" \
                    "include_entities=1&max_position=" + next_pointer + "&reset_error_state=false"
@@ -95,26 +91,19 @@ def dump_data(username, tweets):
     print("\nDumping data in file " + filename)
     data = dict()
     data["tweets"] = tweets
-    analyse( str(data["tweets"]))
+    return analyse(str(data["tweets"]))
     # with open(filename, 'w') as fh:
     #     fh.write(json.dumps(data))
-
-    return filename
-
-
-def get_username():
-    # if username is not passed
-    if len(sys.argv) < 2:
-        usage()
-    username = sys.argv[1].strip().lower()
-    if not username:
-        usage()
 
     return username
 
 
-def start(username=None):
-    username = get_username()
+username = "VisualCoder"
+
+
+def start(username):
+    sleep(1)
+    username = username
     url = "http://www.twitter.com/" + username
     print("\n\nDownloading tweets for " + username)
     response = None
@@ -137,13 +126,25 @@ def start(username=None):
     tweets = get_tweets_data(username, soup)
     # dump data in a text file
     # print(tweets)
-    dump_data(username, tweets)
+    r = dump_data(username, tweets)
     print(str(len(tweets))+" tweets dumped.")
+    return r
+
+
+def tokenization(text):
+    text = re.split('\W+', text)
+    print(text)
+    return text
+
 
 def analyse(tweets):
-    r = Rake() 
-    r.extract_keywords_from_text(tweets)
-    print(r.get_ranked_phrases())
-
-
-start()
+    r = Rake()
+    print(tweets)
+    tweets = str(eval(tweets)[:3])
+    print(tweets)
+    r.extract_keywords_from_text(" ".join(tokenization(tweets)))
+    list = r.get_ranked_phrases()
+    key = []
+    for word in list[:10]:
+        key.extend(word.split())
+    return(key)

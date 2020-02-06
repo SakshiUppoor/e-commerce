@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>ShopEasy</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="{% static 'assets/css/material-kit.css' %}" rel="stylesheet" />
+  
+</head>
+
+<body bgcolor="white">
+    <nav class="navbar navbar-color-on-scroll     fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+        <div class="container">
+          <div class="navbar-translate">
+            <a class="navbar-brand" href="#">
+             ShopEasy </a>
+          
+          </div>
+          <div class="collapse navbar-collapse">
+            
+            <ul class="navbar-nav ml-auto">
+              <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <i class="material-icons">tag_faces</i>
+                </a>
+                <div class="dropdown-menu dropdown-with-icons">
+                  <a href="" class="dropdown-item">
+                   
+                    <div>
+                      <img style="border-radius: 50%;width: 30%;height: 30%;" src="{% static 'assets/img/placeholder.jpg' %}" alt="">
+                      <div class="mt-2">
+                        <p>Username</p>
+                      </div>
+    
+                    </div>
+                  </a>
+                  <a href="" class="dropdown-item">
+                    <i class="material-icons">favorite</i> Wishlist
+                  </a>
+                  <a href="" class="dropdown-item">
+                    <i class="material-icons">layers</i> Log Out
+                  </a>
+                  
+                </div>
+              </li>
+    
+              <li class="button-container nav-item iframe-extern">
+                <a href="" target="_blank" class="btn  btn-rose   btn-round btn-block">
+                  <i class="material-icons">shopping_cart</i> Buy Now
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+  <h2 id="whats"></h2>
+  <div class="main mt-4" style="position: fixed;top:40%;right:170px;" >
+    <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="query" id="query" value="hi"></input>
+    <a style="color:white;" id="capture" class="btn btn-primary btn-round btn-lg">Capture</a><br>
+    <button type="submit" name="search" class="btn btn-primary btn-round btn-lg">Proceed Search</button>
+    </form>
+  </div>
+  
+  <!-- <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+       
+
+      </div>
+    </div>
+  </div> -->
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js"></script> -->
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="{% static 'js/sketch.js' %}"></script>
+</body>
+
+</html>

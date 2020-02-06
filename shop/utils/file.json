@@ -1,0 +1,563 @@
+{
+  "status": 200,
+  "warning": "These results do not include state and province holidays. Please see documentation for more information.",
+  "requests": {
+    "used": 11,
+    "available": 9989,
+    "resets": "2020-03-01 00:00:00"
+  },
+  "holidays": [
+    {
+      "name": "New Year's Day",
+      "date": "2019-01-01",
+      "observed": "2019-01-01",
+      "public": False,
+      "country": "IN",
+      "uuid": "8e814951-e8c8-48be-8c55-43bb552e495a",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Republic Day",
+      "date": "2019-01-26",
+      "observed": "2019-01-26",
+      "public": True,
+      "country": "IN",
+      "uuid": "2e10b51e-08a0-4595-a234-f2cf0a1d0863",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Chinese New Year's Day",
+      "date": "2019-02-05",
+      "observed": "2019-02-05",
+      "public": False,
+      "country": "IN",
+      "uuid": "710ec08b-3b40-4586-a35e-2bd427d1e395",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Valentine's Day",
+      "date": "2019-02-14",
+      "observed": "2019-02-14",
+      "public": False,
+      "country": "IN",
+      "uuid": "0e6de01c-da87-4530-9fa4-d572feee3fa9",
+      "weekday": {
+        "date": { "name": "Thursday", "numeric": "4" },
+        "observed": { "name": "Thursday", "numeric": "4" }
+      }
+    },
+    {
+      "name": "Shivaji Jayanti",
+      "date": "2019-02-19",
+      "observed": "2019-02-19",
+      "public": False,
+      "country": "IN",
+      "uuid": "68765d43-5c69-4fa3-9862-626f5ae64226",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Maha Shivaratri",
+      "date": "2019-03-04",
+      "observed": "2019-03-04",
+      "public": True,
+      "country": "IN",
+      "uuid": "a3268df3-37ab-44af-9307-0502d4bf15ce",
+      "weekday": {
+        "date": { "name": "Monday", "numeric": "1" },
+        "observed": { "name": "Monday", "numeric": "1" }
+      }
+    },
+    {
+      "name": "Festival of Colors",
+      "date": "2019-03-06",
+      "observed": "2019-03-06",
+      "public": False,
+      "country": "IN",
+      "uuid": "5882d504-562d-4ac9-9726-c9ce9509b8ac",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "March Equinox",
+      "date": "2019-03-20",
+      "observed": "2019-03-20",
+      "public": False,
+      "country": "IN",
+      "uuid": "154cb189-4316-46dc-b982-fb9d743ba81f",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Rama Navami",
+      "date": "2019-03-30",
+      "observed": "2019-03-30",
+      "public": False,
+      "country": "IN",
+      "uuid": "d18a7eb9-4748-431b-932d-e8a338001355",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Ambedkar Jayanti",
+      "date": "2019-04-14",
+      "observed": "2019-04-14",
+      "public": False,
+      "country": "IN",
+      "uuid": "d47d215a-677d-41e3-90db-c89ed558045d",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Mahavir Jayanti",
+      "date": "2019-04-17",
+      "observed": "2019-04-17",
+      "public": True,
+      "country": "IN",
+      "uuid": "a1276e76-ad33-4b90-bc9c-36138646ea4e",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Maundy Thursday",
+      "date": "2019-04-18",
+      "observed": "2019-04-18",
+      "public": False,
+      "country": "IN",
+      "uuid": "838f64c0-952a-4fa6-92a8-bfedcb80c705",
+      "weekday": {
+        "date": { "name": "Thursday", "numeric": "4" },
+        "observed": { "name": "Thursday", "numeric": "4" }
+      }
+    },
+    {
+      "name": "Good Friday",
+      "date": "2019-04-19",
+      "observed": "2019-04-19",
+      "public": True,
+      "country": "IN",
+      "uuid": "167cbd86-0b07-4ba6-bec8-f3fbfdb2b353",
+      "weekday": {
+        "date": { "name": "Friday", "numeric": "5" },
+        "observed": { "name": "Friday", "numeric": "5" }
+      }
+    },
+    {
+      "name": "Passover",
+      "date": "2019-04-20",
+      "observed": "2019-04-20",
+      "public": False,
+      "country": "IN",
+      "uuid": "8286ea70-0cd7-490d-94d9-85114a6c8517",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Easter",
+      "date": "2019-04-21",
+      "observed": "2019-04-21",
+      "public": False,
+      "country": "IN",
+      "uuid": "46652207-f408-4780-bad7-7e0b821f6d36",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Labor Day",
+      "date": "2019-05-01",
+      "observed": "2019-05-01",
+      "public": True,
+      "country": "IN",
+      "uuid": "3bace4ce-a2d8-4330-bf53-b440376d0354",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Mother's Day",
+      "date": "2019-05-12",
+      "observed": "2019-05-12",
+      "public": False,
+      "country": "IN",
+      "uuid": "c0dc5da4-87be-422b-b4de-0ca8a5d0c9c4",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Buddha Purnima",
+      "date": "2019-05-18",
+      "observed": "2019-05-18",
+      "public": True,
+      "country": "IN",
+      "uuid": "0278f042-acc9-4c56-8479-2733bd44ac7f",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Festival of Breaking the Fast",
+      "date": "2019-06-04",
+      "observed": "2019-06-04",
+      "public": True,
+      "country": "IN",
+      "uuid": "519e59a5-6c86-4186-b316-9dac376f99e9",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Father's Day",
+      "date": "2019-06-16",
+      "observed": "2019-06-16",
+      "public": False,
+      "country": "IN",
+      "uuid": "498c9897-34c0-4057-90d5-e4083d71df41",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "June Solstice",
+      "date": "2019-06-21",
+      "observed": "2019-06-21",
+      "public": False,
+      "country": "IN",
+      "uuid": "6191ca15-10a5-4915-a2e0-2abb89ba4845",
+      "weekday": {
+        "date": { "name": "Friday", "numeric": "5" },
+        "observed": { "name": "Friday", "numeric": "5" }
+      }
+    },
+    {
+      "name": "Janmashtami",
+      "date": "2019-07-31",
+      "observed": "2019-07-31",
+      "public": True,
+      "country": "IN",
+      "uuid": "1e4721fa-ded0-4279-b151-69ff0cd72045",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Friendship Day",
+      "date": "2019-08-04",
+      "observed": "2019-08-04",
+      "public": False,
+      "country": "IN",
+      "uuid": "f90d0370-e197-4dad-9b42-dbe468c6db49",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Feast of the Sacrifice",
+      "date": "2019-08-11",
+      "observed": "2019-08-11",
+      "public": True,
+      "country": "IN",
+      "uuid": "3ea351d7-5d55-4c13-86ab-b41b9378a012",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Independence Day",
+      "date": "2019-08-15",
+      "observed": "2019-08-15",
+      "public": True,
+      "country": "IN",
+      "uuid": "c0e23dd6-718e-4f17-80fe-33a8feed374f",
+      "weekday": {
+        "date": { "name": "Thursday", "numeric": "4" },
+        "observed": { "name": "Thursday", "numeric": "4" }
+      }
+    },
+    {
+      "name": "Muharram",
+      "date": "2019-09-09",
+      "observed": "2019-09-09",
+      "public": True,
+      "country": "IN",
+      "uuid": "24ccdaea-03da-41b6-aaf7-1e0b5b63903a",
+      "weekday": {
+        "date": { "name": "Monday", "numeric": "1" },
+        "observed": { "name": "Monday", "numeric": "1" }
+      }
+    },
+    {
+      "name": "September Equinox",
+      "date": "2019-09-23",
+      "observed": "2019-09-23",
+      "public": False,
+      "country": "IN",
+      "uuid": "ca0b7d04-b469-4f1d-b38c-35b7979d58a4",
+      "weekday": {
+        "date": { "name": "Monday", "numeric": "1" },
+        "observed": { "name": "Monday", "numeric": "1" }
+      }
+    },
+    {
+      "name": "Mahatma Gandhi Jayanti",
+      "date": "2019-10-02",
+      "observed": "2019-10-02",
+      "public": True,
+      "country": "IN",
+      "uuid": "b1002352-7376-46e1-a265-f667e40b3727",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Dussehra",
+      "date": "2019-10-08",
+      "observed": "2019-10-08",
+      "public": True,
+      "country": "IN",
+      "uuid": "7e381a19-cfa0-4da2-8b8a-23e3ab310000",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Diwali",
+      "date": "2019-10-27",
+      "observed": "2019-10-27",
+      "public": True,
+      "country": "IN",
+      "uuid": "c0b8ec60-62ff-4f01-9006-c5de3ecb5466",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Halloween",
+      "date": "2019-10-31",
+      "observed": "2019-10-31",
+      "public": False,
+      "country": "IN",
+      "uuid": "5e1af720-50f3-4feb-9da5-dca931a84109",
+      "weekday": {
+        "date": { "name": "Thursday", "numeric": "4" },
+        "observed": { "name": "Thursday", "numeric": "4" }
+      }
+    },
+    {
+      "name": "Birth of the Prophet",
+      "date": "2019-11-09",
+      "observed": "2019-11-09",
+      "public": True,
+      "country": "IN",
+      "uuid": "c48d75b6-b472-4559-94eb-5d4d44b2c07b",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Guru Nanak Jayanti",
+      "date": "2019-11-12",
+      "observed": "2019-11-12",
+      "public": True,
+      "country": "IN",
+      "uuid": "67ea49ea-f8e0-4c85-8d02-27dd2c7abfe5",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Guru Tegh Bahadur's Martyrdom Day",
+      "date": "2019-11-24",
+      "observed": "2019-11-24",
+      "public": False,
+      "country": "IN",
+      "uuid": "8a040399-2305-4689-8ac8-8e1e84731991",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "December Solstice",
+      "date": "2019-12-22",
+      "observed": "2019-12-22",
+      "public": False,
+      "country": "IN",
+      "uuid": "9b9d90ef-3053-4781-91c5-0cb093ca66ac",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Hanukkah",
+      "date": "2019-12-23",
+      "observed": "2019-12-23",
+      "public": False,
+      "country": "IN",
+      "uuid": "db1c5bc8-9925-4617-bbba-d885e0877a61",
+      "weekday": {
+        "date": { "name": "Monday", "numeric": "1" },
+        "observed": { "name": "Monday", "numeric": "1" }
+      }
+    },
+    {
+      "name": "Christmas Eve",
+      "date": "2019-12-24",
+      "observed": "2019-12-24",
+      "public": False,
+      "country": "IN",
+      "uuid": "7c8f53dd-5900-4a29-bd81-a47fb159493a",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Second Day of Hanukkah",
+      "date": "2019-12-24",
+      "observed": "2019-12-24",
+      "public": False,
+      "country": "IN",
+      "uuid": "898c12bd-5ff3-4ec9-a312-bc5766a5e1ce",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    },
+    {
+      "name": "Christmas Day",
+      "date": "2019-12-25",
+      "observed": "2019-12-25",
+      "public": True,
+      "country": "IN",
+      "uuid": "f2102cc3-3c76-4b4f-83f8-bef26b88b971",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Third Day of Hanukkah",
+      "date": "2019-12-25",
+      "observed": "2019-12-25",
+      "public": False,
+      "country": "IN",
+      "uuid": "43cad064-f3d0-4017-be4e-1eb57f3ce73a",
+      "weekday": {
+        "date": { "name": "Wednesday", "numeric": "3" },
+        "observed": { "name": "Wednesday", "numeric": "3" }
+      }
+    },
+    {
+      "name": "Fourth Day of Hanukkah",
+      "date": "2019-12-26",
+      "observed": "2019-12-26",
+      "public": False,
+      "country": "IN",
+      "uuid": "1597d4ef-0e5b-4223-997b-25d9cc330c2f",
+      "weekday": {
+        "date": { "name": "Thursday", "numeric": "4" },
+        "observed": { "name": "Thursday", "numeric": "4" }
+      }
+    },
+    {
+      "name": "Fifth Day of Hanukkah",
+      "date": "2019-12-27",
+      "observed": "2019-12-27",
+      "public": False,
+      "country": "IN",
+      "uuid": "8c77a52f-3516-49c4-80bb-1090d4c48102",
+      "weekday": {
+        "date": { "name": "Friday", "numeric": "5" },
+        "observed": { "name": "Friday", "numeric": "5" }
+      }
+    },
+    {
+      "name": "Sixth Day of Hanukkah",
+      "date": "2019-12-28",
+      "observed": "2019-12-28",
+      "public": False,
+      "country": "IN",
+      "uuid": "d1e4d1fc-0c84-41c9-9bbd-9b11ec5f0bbb",
+      "weekday": {
+        "date": { "name": "Saturday", "numeric": "6" },
+        "observed": { "name": "Saturday", "numeric": "6" }
+      }
+    },
+    {
+      "name": "Seventh Day of Hanukkah",
+      "date": "2019-12-29",
+      "observed": "2019-12-29",
+      "public": False,
+      "country": "IN",
+      "uuid": "4338b6b8-98f5-4e01-90a1-3ec09338b497",
+      "weekday": {
+        "date": { "name": "Sunday", "numeric": "7" },
+        "observed": { "name": "Sunday", "numeric": "7" }
+      }
+    },
+    {
+      "name": "Eighth Day of Hanukkah",
+      "date": "2019-12-30",
+      "observed": "2019-12-30",
+      "public": False,
+      "country": "IN",
+      "uuid": "14ea0956-ebfb-44ce-a730-3bbc7079d4b6",
+      "weekday": {
+        "date": { "name": "Monday", "numeric": "1" },
+        "observed": { "name": "Monday", "numeric": "1" }
+      }
+    },
+    {
+      "name": "New Year's Eve",
+      "date": "2019-12-31",
+      "observed": "2019-12-31",
+      "public": False,
+      "country": "IN",
+      "uuid": "b644fd54-4fe1-45f3-8fa2-025b51793537",
+      "weekday": {
+        "date": { "name": "Tuesday", "numeric": "2" },
+        "observed": { "name": "Tuesday", "numeric": "2" }
+      }
+    }
+  ]
+}

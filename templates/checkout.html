@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post">
+      {% csrf_token %}
+      <input
+        class="input"
+        type="text"
+        name="first_name"
+        value="{{order.first_name}}"
+        placeholder="First Name"
+      />
+      <input
+        class="input"
+        type="text"
+        name="last_name"
+        value="{{order.last_name}}"
+        placeholder="Last Name"
+      />
+      <input
+        class="input"
+        type="text"
+        onkeypress="myFunction()"
+        name="address1"
+        value="{{order.address1}}"
+        placeholder="Street Address"
+      />
+      <input
+        class="input"
+        type="text"
+        onkeypress="myFunction()"
+        name="address2"
+        value="{{order.address2}}"
+        placeholder="Street Address"
+      />
+      <input
+        class="input"
+        type="text"
+        onkeypress="myFunction()"
+        name="city"
+        value="{{order.city}}"
+        placeholder="City"
+      />
+      <input
+        class="input"
+        type="text"
+        onkeypress="myFunction()"
+        name="zip"
+        value="{{order.zip}}"
+        placeholder="Zip Code"
+      />
+      <input
+        class="input"
+        type="text"
+        onkeypress="myFunction()"
+        name="country"
+        value="{{order.country}}"
+        placeholder="Country"
+      />
+      <input
+        class="input"
+        type="number"
+        onkeypress="myFunction()"
+        name="phone"
+        value="{{order.phone}}"
+        placeholder="Phone No."
+      />
+      <button id="save" type="submit" name="save"></button>
+      <a id="submit" href="{% url 'payment' %}">
+        Submit
+      </a>
+    </form>
+  </body>
+  <script>
+    function myFunction() {
+      sbmt = document.getElementById("submit");
+      sbmt.addEventListener("submit", () => {
+        console.log("Submit clicked!");
+        e.preventDefault();
+        sbmt.click();
+      });
+      console.log("Clicked!!");
+    }
+    var inputs = document.getElementsByClassName("input");
+    var i = 0,
+      length = inputs.length;
+    for (i; i < length; i++) {
+      if (!inputs[i].value) {
+        inputs[i].focus();
+        break;
+      }
+      console.log(inputs[i]);
+    }
+    //document.getElementById("demo").innerHTML = list;
+  </script>
+</html>

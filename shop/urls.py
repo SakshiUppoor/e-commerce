@@ -3,6 +3,7 @@ from . import views
 #app_name = 'shop'
 
 urlpatterns = [
+    path('', views.main, name="home"),
     path('register/', views.register, name="signup"),
     path('login/', views.user_login, name="user_login"),
     path('logout/', views.user_logout, name="user_logout"),
@@ -17,6 +18,11 @@ urlpatterns = [
     path('orders/', views.orders, name="orders"),
     path('orders/<int:id>', views.viewOrder, name="order"),
     path('search/', views.search, name="search"),
+    path('search/<str:query>', views.searchq, name="searchq"),
+    path('product-hunt/', views.product_hunt, name="product_hunt"),
+    path('checkout/<int:id>', views.checkout, name="checkout"),
+    path('payment/', views.payment, name="payment"),
+    path('rec/', views.get_recommended, name="rec"),
 ]
 
 '''path('profile/<int:user_id>/category/<int: category_id>/',

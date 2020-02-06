@@ -7,15 +7,45 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.views.generic import ListView
 import requests
+from django.db.models import Q
+from .utils import twitter
+
 
 User = get_user_model()
 
 # Create your views here.
 
 
+def main(request):
+    if request.method=="POST":
+        if "search" in request.POST:
+            query = request.POST["query"]
+            return HttpResponseRedirect(reverse('searchq', kwargs={"query":query}))
+    recommended = get_recommended(request)
+    print("RECOMMEND=", recommended)
+    c = Campaign.objects.all()
+    context = {
+        'categories': Category.objects.all(),
+        'subcategories': Subcategory.objects.all(),
+        'recommended': recommended,
+        'products': Product.objects.all().order_by("-id")[:3],
+        'c1': c[0],
+        'c2': c[1],
+        'c3': c[2],
+        'c4': c[3],
+        'c5': c[4],
+    }
+    return render(request, "main.html", context)
+
+
 def register(request):
 
     if request.method == 'POST':
+        print(request.POST['first_name'])
+        print(request.POST['last_name'])
+        print(request.POST['email'])
+        print(request.POST['password1'])
+        print(request.POST['password2'])
         if 'customerCreate' in request.POST:
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
@@ -38,7 +68,9 @@ def register(request):
                 else:
                     messages.info(request, 'Password not matching')
                     return HttpResponseRedirect(reverse('signup'))
+
             else:
+                print("hi")
                 messages.info(request, 'Email taken')
                 return HttpResponseRedirect(reverse('signup'))
             return HttpResponseRedirect(reverse('user_login'))
@@ -66,7 +98,7 @@ def register(request):
             return HttpResponseRedirect(reverse('user_login'))
 
     else:
-        return render(request, 'signup.html')
+        return render(request, 'sign-up.html')
 
 
 def user_login(request):
@@ -271,7 +303,7 @@ def viewProduct(request, product_slug):
         'wishitem': WishlistItem.objects.filter(
             user=request.user, product=product).exists,
     }
-    return render(request, "productinfo.html", context)
+    return render(request, "product-page.html", context)
 
 
 class ProductView(ListView):
@@ -468,8 +500,8 @@ def filterBySubcategory(request, user_id, subcategory_id):
     return render(request, "404.html")
 
 
-def search(request):
-    if request.method=="POST":
+def search(request, s):
+    if request.method == "POST":
         print(request.POST)
         if 'search' in request.POST:
             print("hi")
@@ -479,8 +511,9 @@ def search(request):
                 query_list = request.COOKIES['searched_for'] + "," + query
             else:
                 query_list = query
-            response = HttpResponseRedirect(reverse('search'))
+            response = HttpResponseRedirect(reverse('searchq',kwargs={"query":query}))
             response.set_cookie('searched_for', query_list)
+            print("Cookie set!")
             return response
     print(request.COOKIES)
     query_list = []
@@ -492,5 +525,89 @@ def search(request):
     context = {
         'query_list': query_list,
     }
-    return render(request, 'search.html', context)
- 
+    return HttpResponseRedirect(reverse('searchq',kwargs={"query":query}))
+
+
+def searchq(request, query):
+    if request.method == "POST":
+        print(request.POST)
+        if 'search' in request.POST:
+            print("hi")
+            query = request.POST['query']
+            query_list = []
+            if 'searched_for' in request.COOKIES:
+                query_list = request.COOKIES['searched_for'] + "," + query
+            else:
+                query_list = query
+            response = HttpResponseRedirect(reverse('searchq',kwargs={"query":query}))
+            response.set_cookie('searched_for', query_list)
+            print("Cookie set!")
+            return response
+    products = Product.objects.filter(Q(name__contains=query) | Q(slug__contains=query) | Q(
+        description__contains=query) | Q(subcategory__category__name__contains=query) | Q(subcategory__name__contains=query))
+    print(products)
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    context = {
+        'query':query,
+        'products': products,
+        'categories': categories,
+        'subcategories': subcategories,
+    }
+    return render(request, "search.html", context)
+
+
+def product_hunt(request):
+    if request.method == "POST":
+        query = request.POST['query']
+        if ',' in query:
+            query = query.split(',')[0]
+        print(query)
+        return HttpResponseRedirect(reverse('searchq', kwargs={'query': query}))
+    else:
+        return render(request, 'cam.html')
+
+
+def checkout(request, id):
+    order = Order.objects.filter(id=id)
+    if request.method == "POST":
+        data = {
+            'address1': request.POST['address1'],
+            'address2': request.POST['address2'],
+            'first_name': request.POST['first_name'],
+            'last_name': request.POST['last_name'],
+            'country': request.POST['country'],
+            'city': request.POST['city'],
+            'zip': request.POST['zip'],
+            'phone': request.POST['phone'],
+        }
+        order.update(**data)
+    context = {
+        'order': Order.objects.get(id=id),
+    }
+    return render(request, 'checkout.html', context)
+
+
+def payment(request):
+    return HttpResponse("Payment")
+
+
+def get_recommended(request):
+    results = twitter.start("VisualCoder")
+    if 'searched_for' in request.COOKIES:
+        print(request.COOKIES['searched_for'])
+    print(results)
+    products = Product.objects.none()
+    for query in results:
+        products |= Product.objects.filter(Q(name__contains=query) | Q(slug__contains=query) | Q(
+            description__contains=query) | Q(subcategory__category__name__contains=query) | Q(subcategory__name__contains=query))
+    print(products)
+    context = {
+        "products": products,
+    }
+    return products
+
+'''for product in Product.objects.all():
+    product.discount="0.0"
+    product.discounted_rate=product.rate
+    product.save()'''
