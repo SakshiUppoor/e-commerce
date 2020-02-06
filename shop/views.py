@@ -56,6 +56,18 @@ def register(request):
             country = request.POST['country']
             twitter = request.POST['twitter']
             facebook = request.POST['facebook']
+            no = request.POST['phone']
+            print(no)
+            url = "https://www.fast2sms.com/dev/bulk"
+            payload = "sender_id=FSTSMS&message=Welcome to ShopEasy, " + str(first_name) + "! Your verification code is : 234678 &language=english&route=p&numbers=" + \
+                str(no)
+            headers = {
+                'authorization': "xmSHAJhecCogOEzUudp1vMPl7w2a6D53RIWt89X0kVLFnYNZfrFQfLkclToD62CNMOpdGSvj1X98Pa4K",
+                'Content-Type': "application/x-www-form-urlencoded",
+                'Cache-Control': "no-cache",
+            }
+            response = requests.request("POST", url, data=payload, headers=headers)
+            print(response.text)
             if not User.objects.filter(email=email).exists():
                 if password1 == password2:
                     '''if User.objects.filter(username=username).exists():
@@ -539,12 +551,12 @@ def searchq(request, query):
                 query_list = request.COOKIES['searched_for'] + "," + query
             else:
                 query_list = query
+            print("!____" ,query_list)
             response = HttpResponseRedirect(reverse('searchq',kwargs={"query":query}))
             response.set_cookie('searched_for', query_list)
             print("Cookie set!")
             return response
-    products = Product.objects.filter(Q(name__contains=query) | Q(slug__contains=query) | Q(
-        description__contains=query) | Q(subcategory__category__name__contains=query) | Q(subcategory__name__contains=query))
+    products = Product.objects.filter(Q(name__contains=query) | Q(slug__contains=query) | Q(description__contains=query) | Q(subcategory__category__name__contains=query) | Q(subcategory__name__contains=query))
     print(products)
     categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
@@ -589,7 +601,7 @@ def checkout(request, id):
 
 
 def payment(request):
-    return HttpResponse("Payment")
+    return render(request, "popup2.html")
 
 
 def get_recommended(request):
