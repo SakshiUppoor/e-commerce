@@ -5,7 +5,7 @@
     <img src="https://imgur.com/tNFdroW.png" alt="Logo" width="70" height="70">
   </a>
 
-  <h3 align="center">E-Commerce API</h3>
+  <h3 align="center">E-Commerce Website</h3>
 
   <p align="center">
   An e-commerce project built during<br>the Unicode learning period.
